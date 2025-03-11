@@ -1,63 +1,80 @@
 [package]
-name = "web-cache-scanner"
+name = "web-cache-vulnerability-scanner"
 version = "0.1.0"
-edition = "2021"
-authors = ["Nsisong Labs <hello@nsisonglabs.com>"]
-description = "A high-performance web cache vulnerability scanner"
+edition = "2025"
+authors = ["Nsisong Labs <contact@nsisonglabs.com>"]
+description = "Advanced Web Cache Vulnerability Scanner"
 license = "MIT"
-repository = "https://github.com/nsisonglabs/web-cache-scanner"
-readme = "README.md"
-keywords = ["security", "web-security", "cache", "vulnerability-scanner", "pentest"]
-categories = ["command-line-utilities", "network-programming"]
+repository = "https://github.com/nsisongltd/web-cache-vulnerability-scanner"
+keywords = ["security", "web", "cache", "vulnerability", "scanner"]
+categories = ["command-line-utilities", "web-programming"]
 
 [dependencies]
-# Async runtime
+# Core async runtime
 tokio = { version = "1.36", features = ["full"] }
+futures = "0.3"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# CLI
+clap = { version = "4.5", features = ["derive"] }
 
 # HTTP client
-reqwest = { version = "0.11", features = ["json", "cookies", "rustls-tls"] }
-hyper = { version = "1.1", features = ["full"] }
-
-# CLI interface
-clap = { version = "4.5", features = ["derive"] }
+reqwest = { version = "0.11", features = ["json", "cookies", "rustls-tls", "socks"] }
+url = "2.5"
 
 # Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-toml = "0.8"
-
-# Error handling
-thiserror = "1.0"
-anyhow = "1.0"
+serde_yaml = "0.9"
 
 # Logging and tracing
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2"
 
-# Parallel processing
-rayon = "1.8"
-
-# Async utilities
-futures = "0.3"
+# Async traits
 async-trait = "0.1"
-
-# Progress bars and CLI UI
-indicatif = "0.17"
-console = "0.15"
 
 # Time handling
 chrono = { version = "0.4", features = ["serde"] }
 
-# URL parsing
-url = "2.5"
+# Rate limiting
+governor = "0.6"
+
+# HTML parsing for crawling
+scraper = "0.18"
+html5ever = "0.26"
+
+# Regular expressions
+regex = "1.10"
+
+# Cryptography
+ring = "0.17"
+base64 = "0.21"
+
+# Progress bars
+indicatif = "0.17"
+
+# Template rendering
+handlebars = "5.1"
+markdown = "1.0"
 
 [dev-dependencies]
+mockito = "1.2"
 tokio-test = "0.4"
 pretty_assertions = "1.4"
-mockito = "1.2"
+wiremock = "0.5"
 
 [profile.release]
 lto = true
 codegen-units = 1
 panic = "abort"
 strip = true
+opt-level = 3
+
+[profile.dev]
+opt-level = 0
+debug = true
