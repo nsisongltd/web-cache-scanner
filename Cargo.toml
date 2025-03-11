@@ -1,11 +1,11 @@
 [package]
 name = "web-cache-vulnerability-scanner"
 version = "0.1.0"
-edition = "2025"
-authors = ["Nsisong Labs <contact@nsisonglabs.com>"]
+edition = "2021"
+authors = ["NSISONGLabs <contact@nsisonglabs.com>"]
 description = "Advanced Web Cache Vulnerability Scanner"
+repository = "https://github.com/nsisonglabs/web-cache-vulnerability-scanner"
 license = "MIT"
-repository = "https://github.com/nsisongltd/web-cache-vulnerability-scanner"
 keywords = ["security", "web", "cache", "vulnerability", "scanner"]
 categories = ["command-line-utilities", "web-programming"]
 
@@ -22,7 +22,7 @@ thiserror = "1.0"
 clap = { version = "4.5", features = ["derive"] }
 
 # HTTP client
-reqwest = { version = "0.11", features = ["json", "cookies", "rustls-tls", "socks"] }
+reqwest = { version = "0.11", features = ["json", "cookies"] }
 url = "2.5"
 
 # Serialization
@@ -39,7 +39,7 @@ tracing-appender = "0.2"
 async-trait = "0.1"
 
 # Time handling
-chrono = { version = "0.4", features = ["serde"] }
+chrono = "0.4"
 
 # Rate limiting
 governor = "0.6"
@@ -60,20 +60,21 @@ indicatif = "0.17"
 
 # Template rendering
 handlebars = "5.1"
-markdown = "1.0"
+markdown = { version = "1.0.0-alpha.23" }
 
 [dev-dependencies]
 mockito = "1.2"
 tokio-test = "0.4"
 pretty_assertions = "1.4"
 wiremock = "0.5"
+tempfile = "3.10"
 
 [profile.release]
+opt-level = 3
 lto = true
 codegen-units = 1
 panic = "abort"
 strip = true
-opt-level = 3
 
 [profile.dev]
 opt-level = 0
