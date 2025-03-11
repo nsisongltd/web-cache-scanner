@@ -1,0 +1,63 @@
+[package]
+name = "web-cache-scanner"
+version = "0.1.0"
+edition = "2021"
+authors = ["Nsisong Labs <hello@nsisonglabs.com>"]
+description = "A high-performance web cache vulnerability scanner"
+license = "MIT"
+repository = "https://github.com/nsisonglabs/web-cache-scanner"
+readme = "README.md"
+keywords = ["security", "web-security", "cache", "vulnerability-scanner", "pentest"]
+categories = ["command-line-utilities", "network-programming"]
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.36", features = ["full"] }
+
+# HTTP client
+reqwest = { version = "0.11", features = ["json", "cookies", "rustls-tls"] }
+hyper = { version = "1.1", features = ["full"] }
+
+# CLI interface
+clap = { version = "4.5", features = ["derive"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging and tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Parallel processing
+rayon = "1.8"
+
+# Async utilities
+futures = "0.3"
+async-trait = "0.1"
+
+# Progress bars and CLI UI
+indicatif = "0.17"
+console = "0.15"
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# URL parsing
+url = "2.5"
+
+[dev-dependencies]
+tokio-test = "0.4"
+pretty_assertions = "1.4"
+mockito = "1.2"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

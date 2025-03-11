@@ -1,0 +1,68 @@
+# ignore Log, Completed, Report
+*_WCVS_*
+# ignore the url list file
+urls.list
+# ignore test folder
+test/
+# ignore vscode
+.vscode/
+# ignore compiled binaries
+Web-Cache-Vulnerability-Scanner
+Web-Cache-Vulnerability-Scanner.exe
+# ignore build folder
+build/
+README.md
+web-cache-vulnerability-scanner.go
+
+
+
+
+
+# Added by cargo
+
+/target
+
+
+# Added by Isaac
+hide.c
+hide.exe
+hide
+
+# Rust
+/target
+**/*.rs.bk
+Cargo.lock
+
+# IDE and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs and reports
+logs/
+reports/
+*.log
+scan_results/
+*.json
+*.html
+*.txt
+!README.md
+
+# Config
+config/*.toml
+!config/config.toml
+
+# Environment
+.env
+.env.*
+
+# OS specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test artifacts
+/test-results/
+/coverage/

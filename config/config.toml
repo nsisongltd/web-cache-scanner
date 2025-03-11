@@ -1,0 +1,32 @@
+[scanner]
+threads = 10
+timeout = 30
+max_retries = 3
+user_agent = "Web-Cache-Scanner/1.0"
+
+[http]
+follow_redirects = true
+verify_ssl = true
+max_redirects = 10
+connection_timeout = 30
+request_timeout = 30
+
+[cache_tests]
+# Test specific timeouts (in seconds)
+poisoning_timeout = 60
+deception_timeout = 45
+timing_timeout = 90
+
+# Number of requests for timing tests
+timing_requests = 100
+
+[reporting]
+format = "json"
+output_dir = "reports"
+include_timestamps = true
+include_request_details = true
+
+[logging]
+level = "info"
+file = "scanner.log"
+include_timestamps = true 
