@@ -171,3 +171,26 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Security
 
 For security issues, please email security@nsisonglabs.com or open a security advisory on GitHub. 
+
+## Once again...
+If you want to test it, just run this:
+```bash
+cargo run -- scan -t https://example.com
+```
+
+and if you want to go a step further...
+
+#### to run advanced scan with custom configuration
+```bash
+cargo run -- scan -t https://example.com -c config/sample-config.yaml -d reports -o json --debug
+```
+
+### to generate a sample configuration
+```bash
+cargo run -- generate-config -o my-config.yaml
+```
+
+then, to validate a config file
+```bash
+cargo run -- validate-config -c my-config.yaml
+```

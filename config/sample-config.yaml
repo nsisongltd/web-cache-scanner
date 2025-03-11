@@ -1,0 +1,25 @@
+scan:
+  threads: 10
+  timeout: 30
+  follow_redirects: true
+  max_redirects: 5
+  verify_ssl: true
+  rate_limit: 100
+  depth: 3
+  passive: false
+  paths: []
+  exclude_paths: []
+  wordlists: []
+
+http:
+  headers: []
+  cookies: []
+  user_agent: "Web Cache Vulnerability Scanner/1.0"
+  proxy: null
+  auth: null
+
+reporting:
+  output_format: "json"
+  output_dir: "reports"
+  include_evidence: true
+  include_references: true 
